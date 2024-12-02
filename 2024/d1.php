@@ -20,14 +20,32 @@ foreach ($lists as $key => $value) {
 
 assert(assertion: count(value: $lists['left']) === count(value: $lists['right']));
 
-$total = 0;
+$totalDistance = 0;
 
 foreach ($lists['left'] as $key => $value) {
     $sum = $value - $lists['right'][$key];
 
     if ($sum < 0) $sum = -$sum;
 
-    $total += $sum;
+    $totalDistance += $sum;
 }
 
-echo $total;
+echo "Total distance: $totalDistance\n";
+
+/**
+ * Part two
+ */
+
+$similarityScore = 0;
+
+foreach ($lists['left'] as $value) {
+    $times = count(value: array_filter(
+        array: $lists['right'],
+        callback: fn (int $id): bool => $id == $value
+    ));
+
+    $similarityScore += $value * $times;
+}
+
+echo "Similarity score: $similarityScore\n";
+
