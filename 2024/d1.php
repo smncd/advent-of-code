@@ -41,7 +41,7 @@ $similarityScore = 0;
 foreach ($lists['left'] as $value) {
     $times = count(value: array_filter(
         array: $lists['right'],
-        callback: fn (int $id): bool => $id == $value
+        callback: static fn (int $id): bool => $id == $value
     ));
 
     $similarityScore += $value * $times;
