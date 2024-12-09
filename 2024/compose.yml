@@ -4,7 +4,7 @@ services:
     image: php:8.4-cli
     working_dir: /app
     volumes:
-      - ./php:/app
+      - ./src/php:/app
       - ./data:/data
     stdin_open: true
     tty: true
@@ -14,7 +14,7 @@ services:
     image: golang:1.23
     working_dir: /app
     volumes:
-      - ./go:/app
+      - ./src/go:/app
       - ./data:/data
     stdin_open: true
     tty: true
@@ -24,7 +24,7 @@ services:
     image: elixir:1.15
     working_dir: /app
     volumes:
-      - ./elixir:/app
+      - ./src/elixir:/app
       - ./data:/data
     stdin_open: true
     tty: true
@@ -34,7 +34,7 @@ services:
     image: python:3.12
     working_dir: /app
     volumes:
-      - ./python:/app
+      - ./src/python:/app
       - ./data:/data
     stdin_open: true
     tty: true
