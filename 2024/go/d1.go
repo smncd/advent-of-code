@@ -1,35 +1,35 @@
 package main
 
 import (
-	"fmt" 
-	"os"
 	"bufio"
-	"strings"
-	"strconv"
+	"fmt"
+	"os"
 	"sort"
+	"strconv"
+	"strings"
 )
 
 type Lists struct {
-    Right []int
-    Left  []int
+	Right []int
+	Left  []int
 }
 
 func loadLists(filepath string) Lists {
 	lists := Lists{
-        Right: []int{},
-        Left:  []int{},
-    }
-	
+		Right: []int{},
+		Left:  []int{},
+	}
+
 	file, err := os.Open(filepath)
-	
+
 	if err != nil {
 		panic(err)
 	}
-	
+
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	
+
 	for scanner.Scan() {
 		line := scanner.Text()
 
@@ -37,6 +37,10 @@ func loadLists(filepath string) Lists {
 
 		if len(ids) > 1 {
 			left, err := strconv.Atoi(ids[0])
+			if err != nil {
+				panic(err)
+			}
+
 			right, err := strconv.Atoi(ids[1])
 			if err != nil {
 				panic(err)
@@ -54,27 +58,30 @@ func loadLists(filepath string) Lists {
 	sort.Ints(lists.Left[:])
 	sort.Ints(lists.Right[:])
 
+	if len(lists.Left) != len(lists.Right) {
+		panic("Lists are not the same length")
+	}
+
 	return lists
 }
 
 func absInt(x int) int {
-	return absDiffInt(x, 0)
-}
-
-func absDiffInt(x int, y int) int {
-	if x < y {
-		return y - x
+	if x < 0 {
+		return 0 - x
 	}
-	return x - y
+
+	return x - 0
 }
 
 func countOccurrences(slice []int, condition func(int) bool) int {
 	count := 0
+
 	for _, v := range slice {
 		if condition(v) {
 			count++
 		}
 	}
+
 	return count
 }
 
@@ -82,7 +89,7 @@ func main() {
 	lists := loadLists("/data/d1.txt")
 
 	totalDistance := 0
-	similarityScore:= 0
+	similarityScore := 0
 
 	for index, value := range lists.Left {
 		distance := absInt(value - lists.Right[index])
