@@ -1,14 +1,7 @@
 <?php declare(strict_types=1);
 
-$map = [];
-
-$file = file(filename: __DIR__ . '/../data/d6.txt');
-
-foreach ($file as $index => $line) {
-    $map[$index] = str_split(string: $line);
-}
-
-$guard = new class ($map) {
+class Guard
+{
     public const DIRECTIONS = [
         'up' => '^',
         'right' => '>',
@@ -52,7 +45,17 @@ $guard = new class ($map) {
             'left' => 'up',
         };
     }
-};
+}
+
+$map = [];
+
+$file = file(filename: __DIR__ . '/../data/d6.txt');
+
+foreach ($file as $index => $line) {
+    $map[$index] = str_split(string: $line);
+}
+
+$guard = new Guard(map: $map);
 
 $positions = [];
 
