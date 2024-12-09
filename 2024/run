@@ -3,4 +3,5 @@
 case $1 in 
   go) docker compose exec go go run $2/main.go;;
   php) docker compose exec php php $2.php;;
+  elixir) docker compose exec elixir elixir $2.exs;;
 esac
