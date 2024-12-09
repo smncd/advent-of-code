@@ -14,38 +14,16 @@ type Lists struct {
     Left  []int
 }
 
-func absInt(x int) int {
-	return absDiffInt(x, 0)
-}
-
-func absDiffInt(x, y int) int {
-	if x < y {
-		return y - x
-	}
-	return x - y
-}
-
-func countOccurrences(slice []int, condition func(int) bool) int {
-	count := 0
-	for _, v := range slice {
-		if condition(v) {
-			count++
-		}
-	}
-	return count
-}
-
-func main() {
+func loadLists(filepath string) Lists {
 	lists := Lists{
         Right: []int{},
         Left:  []int{},
     }
 	
-	file, err := os.Open("/data/d1.txt")
+	file, err := os.Open(filepath)
 	
 	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
+		panic(err)
 	}
 	
 	defer file.Close()
@@ -75,6 +53,33 @@ func main() {
 
 	sort.Ints(lists.Left[:])
 	sort.Ints(lists.Right[:])
+
+	return lists
+}
+
+func absInt(x int) int {
+	return absDiffInt(x, 0)
+}
+
+func absDiffInt(x, y int) int {
+	if x < y {
+		return y - x
+	}
+	return x - y
+}
+
+func countOccurrences(slice []int, condition func(int) bool) int {
+	count := 0
+	for _, v := range slice {
+		if condition(v) {
+			count++
+		}
+	}
+	return count
+}
+
+func main() {
+	lists := loadLists("/data/d1.txt")
 
 	totalDistance := 0
 	similarityScore:= 0
