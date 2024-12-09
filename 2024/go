@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker compose exec go go run $1.go;

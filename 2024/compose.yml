@@ -8,3 +8,13 @@ services:
       - ./data:/data
     stdin_open: true
     tty: true
+
+  go:
+    container_name: aoc-2024-go
+    image: golang:1.21
+    working_dir: /app
+    volumes:
+      - ./src:/app
+      - ./data:/data
+    stdin_open: true
+    tty: true
