@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 $file = file_get_contents(
-    filename: __DIR__ . '/../data/d3.txt',
+    filename: '/data/d3.txt',
 );
 
 $matches = [];

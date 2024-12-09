@@ -37,7 +37,7 @@ function processLevels(
     return $isSafe;
 }
 
-$file = file(filename: __DIR__ . '/../data/d2.txt');
+$file = file('/data/d2.txt');
 
 $safeReports = 0;
 $safeReportsWithDampener = 0;

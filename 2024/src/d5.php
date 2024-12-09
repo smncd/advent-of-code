@@ -18,7 +18,7 @@ function formatData(array $file, string $pattern, string $separator): array
 }
 
 
-$file = file(filename: __DIR__ . '/../data/d5.txt');
+$file = file(filename: '/data/d5.txt');
 
 $pageOrderingRules = formatData(
     file: $file,

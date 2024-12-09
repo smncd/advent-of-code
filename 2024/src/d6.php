@@ -49,7 +49,7 @@ class Guard
 
 $map = [];
 
-$file = file(filename: __DIR__ . '/../data/d6.txt');
+$file = file(filename: '/data/d6.txt');
 
 foreach ($file as $index => $line) {
     $map[$index] = str_split(string: $line);

@@ -5,7 +5,7 @@ $lists = [
     'right' => [],
 ];
 
-$file = file(filename: __DIR__ . '/../data/d1.txt');
+$file = file(filename: '/data/d1.txt');
 
 foreach ($file as $key => $line) {
     $ids = explode(separator: '   ', string: $line);

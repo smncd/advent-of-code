@@ -4,6 +4,7 @@ services:
     image: php:8.4-cli
     working_dir: /app
     volumes:
-      - .:/app
+      - ./src:/app
+      - ./data:/data
     stdin_open: true
     tty: true
