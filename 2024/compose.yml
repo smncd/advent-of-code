@@ -28,3 +28,13 @@ services:
       - ./data:/data
     stdin_open: true
     tty: true
+
+  python:
+    container_name: aoc-2024-python
+    image: python:3.12
+    working_dir: /app
+    volumes:
+      - ./python:/app
+      - ./data:/data
+    stdin_open: true
+    tty: true
