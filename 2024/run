@@ -1,6 +1,6 @@
 #!/bin/bash
 
 case $1 in 
-  go) docker compose exec go go run $2.go;;
+  go) docker compose exec go go run $2/main.go;;
   php) docker compose exec php php $2.php;;
 esac

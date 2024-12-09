@@ -65,14 +65,6 @@ func loadLists(filepath string) Lists {
 	return lists
 }
 
-func absInt(x int) int {
-	if x < 0 {
-		return 0 - x
-	}
-
-	return x - 0
-}
-
 func countOccurrences(slice []int, condition func(int) bool) int {
 	count := 0
 
@@ -83,6 +75,14 @@ func countOccurrences(slice []int, condition func(int) bool) int {
 	}
 
 	return count
+}
+
+func absInt(x int) int {
+	if x < 0 {
+		return 0 - x
+	}
+
+	return x - 0
 }
 
 func main() {
