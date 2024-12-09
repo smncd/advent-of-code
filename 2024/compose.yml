@@ -4,7 +4,7 @@ services:
     image: php:8.4-cli
     working_dir: /app
     volumes:
-      - ./src:/app
+      - ./php:/app
       - ./data:/data
     stdin_open: true
     tty: true
@@ -14,7 +14,7 @@ services:
     image: golang:1.21
     working_dir: /app
     volumes:
-      - ./src:/app
+      - ./go:/app
       - ./data:/data
     stdin_open: true
     tty: true
