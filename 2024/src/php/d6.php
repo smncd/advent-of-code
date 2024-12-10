@@ -57,7 +57,9 @@ foreach ($file as $index => $line) {
 
 $guard = new Guard(map: $map);
 
-$positions = [];
+$positions = [
+    ['y' => $guard->y, 'x' => $guard->x]
+];
 
 while ($guard->onMap) {
     $nextPosition = (object) match ($guard->direction) {
@@ -94,6 +96,6 @@ while ($guard->onMap) {
     $guard->x = $nextPosition->x;
 }
 
-$result = count(value: $positions) + 1; // +1 for the initial position of the guard.
+$result = count(value: $positions);
 
 echo "Guard will visit {$result} positions";
